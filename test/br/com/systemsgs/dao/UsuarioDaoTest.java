@@ -1,6 +1,7 @@
 package br.com.systemsgs.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.hibernate.Session;
 import org.junit.Test;
@@ -24,6 +25,21 @@ public class UsuarioDaoTest {
 		assertEquals("guiteste@gmail.com", usuario.getEmail());
 		
 		session.close();
+		
+	}
+	
+	@Test
+	public void deveRetornarNuloSeNaoEncontrarUsuario() {
+
+		Session session = new CriadorDeSessao().getSession();
+        UsuarioDao usuarioDao = new UsuarioDao(session);
+
+        Usuario usuarioDoBanco = usuarioDao
+                .porNomeEEmail("Gui", "gui@teste.com.br");
+
+        assertNull(usuarioDoBanco);
+
+        session.close();
 		
 	}
 
