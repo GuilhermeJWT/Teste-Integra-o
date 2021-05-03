@@ -50,5 +50,27 @@ public class LeilaoDaoTest {
 		assertEquals(1L, total);
 		
 	}
+	
+	@Test
+    public void deveRetornarZeroSeNaoHaLeiloesNovos() {
+    Usuario gui = 
+            new Usuario("Guilherme Santos", "gui@teste.com.br");
+
+    Leilao encerrado = 
+            new Leilao("XBox", 700.0, gui, false);
+    Leilao tambemEncerrado = 
+            new Leilao("Geladeira", 1500.0, gui, false);
+    encerrado.encerra();
+    tambemEncerrado.encerra();
+
+    usuarioDao.salvar(gui);
+    leilaoDao.salvar(encerrado);
+    leilaoDao.salvar(tambemEncerrado);
+
+    long total = leilaoDao.total();
+
+    assertEquals(0L, total);
+    
+	}
 
 }
