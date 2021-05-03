@@ -1,6 +1,7 @@
 package br.com.systemsgs.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.Calendar;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.systemsgs.dominio.Leilao;
+import br.com.systemsgs.dominio.LeilaoBuilder;
 import br.com.systemsgs.dominio.Usuario;
 
 public class LeilaoDaoTest {
@@ -188,5 +190,5 @@ public class LeilaoDaoTest {
 		assertEquals(0, leiloes.size());
 		
 	}
-
+	
 }
